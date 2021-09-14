@@ -1,10 +1,9 @@
-import logo from './logo.svg';
-import './App.css';
+
+import { GnomesPage } from "./pages/Gnomes/gnomes";
 
 function App() {
-  return (
-  
-  );
+ return <GnomesPage />
+
 }
 
 export default App;
