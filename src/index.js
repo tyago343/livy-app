@@ -4,11 +4,13 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { GnomesProvider } from "./context/gnomes.context";
-
+import { BrowserRouter as Router } from "react-router-dom";
 ReactDOM.render(
   <React.StrictMode>
     <GnomesProvider>
-      <App />
+      <Router>
+        <App />
+      </Router>
     </GnomesProvider>
   </React.StrictMode>,
   document.getElementById("root")

@@ -16,7 +16,6 @@ function GnomesProvider(props) {
         const data = await response;
         if (response.ok) {
           const result = await data.json();
-          console.log(result)
           setData(result);
           setIsloading(false);
         } else {
