@@ -7,11 +7,9 @@ function GnomesPage(props) {
   const [gnomes, setGnomes] = useState([]);
 
   useEffect(() => {
-    const gnomesToSet = data?.Brastlewark.filter((gnome, index) => {
-      if (index < 50) {
-        if (!filter) return gnome;
-        if (gnome.professions.contains(filter)) return gnome;
-      }
+    const gnomesToSet = data?.Brastlewark.filter((gnome) => {
+      if (!filter) return gnome;
+      if (gnome.professions.contains(filter)) return gnome;
       return {};
     });
 
