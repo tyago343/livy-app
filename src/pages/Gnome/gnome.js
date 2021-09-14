@@ -39,7 +39,7 @@ function GnomePage() {
             <ul>
               <li>
                 Hair color:{" "}
-                <span style={{ color: gnome.hair_color }}>
+                <span>
                   {gnome.hair_color}
                 </span>
               </li>
