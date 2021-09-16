@@ -1,5 +1,9 @@
+/** @jsxRuntime classic */
+/** @jsx jsx */
+import { css, jsx } from "@emotion/react";
+import * as mq from "../styles/mediaqueries";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { GnomeCard } from "./gnomecard";
 
 const GnomeList = ({ gnomes }) => {
   var [page, setPage] = useState(1);
@@ -11,32 +15,7 @@ const GnomeList = ({ gnomes }) => {
   const indexOfFirstGnome = indexOfLastGnome - qtyPerPage;
   const currentGnomes = gnomes.slice(indexOfFirstGnome, indexOfLastGnome);
   const renderGnomes = currentGnomes.map((gnome, index) => {
-    return (
-      <Link to={`/gnome/${gnome.id}`} key={index}>
-        <h2>{gnome.name}</h2>
-        <img loading="lazy" src={gnome.thumbnail} alt={gnome.name} />
-        <div>
-          <h3>Characteristics:</h3>
-          <ul>
-            <li>
-              Hair color:{" "}
-              <span style={{ color: gnome.hair_color }}>
-                {gnome.hair_color}
-              </span>
-            </li>
-            <li>
-              Weight: <span>{parseFloat(gnome.weight).toFixed(2)}</span>
-            </li>
-            <li>
-              Height: <span>{parseFloat(gnome.height).toFixed(2)}</span>
-            </li>
-            <li>
-              Age: <span>{gnome.age}</span>
-            </li>
-          </ul>
-        </div>
-      </Link>
-    );
+    return <GnomeCard gnome={gnome} />;
   });
 
   const pageNumbers = [];
@@ -51,6 +30,24 @@ const GnomeList = ({ gnomes }) => {
           id={number}
           selected={number === page}
           onClick={handleClick}
+          css={{
+            height: "25px",
+            margin: "0 20px",
+            borderRadius: "999px",
+            background: "#397",
+            cursor: "pointer",
+            boxShadow: `0 5px 5px -5px rgba(80, 255, 129, 0.15),
+              0 10px 10px -5px rgba(80, 255, 129, 0.15),
+              0 15px 15px -5px rgba(80, 255, 129, 0.15),
+              0 20px 20px -5px rgba(80, 255, 129, 0.15)`,
+            transition: "0.25s ease",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            color: "#fff",
+            padding: "10px",
+            width: "120px",
+          }}
         >
           {number}
         </li>
@@ -58,11 +55,37 @@ const GnomeList = ({ gnomes }) => {
     }
   });
   return (
-    <section>
-      {renderGnomes}
-      <ol>{renderPageNumbers}</ol>
-    </section>
+    <div>
+      <section
+        css={{
+          display: "grid",
+          gridTemplateColumns: "repeat(4, 1fr)",
+          gridGap: "50px 2%",
+          padding: "25px 15%",
+          [mq.medium]: { gridTemplateColumns: "repeat(3, 1fr)" },
+          [mq.small]: {
+            gridTemplateColumns: "1fr 1fr",
+            padding: "25px 7%",
+          },
+          [mq.mobile]: {
+            gridTemplateColumns: "1fr",
+            padding: "25px",
+          },
+        }}
+      >
+        {renderGnomes}
+      </section>
+      <ol
+        css={css`
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: "100%";
+        `}
+      >
+        {renderPageNumbers}
+      </ol>
+    </div>
   );
-
 };
 export { GnomeList };
