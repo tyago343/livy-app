@@ -1,6 +1,10 @@
+/** @jsxRuntime classic */
+/** @jsx jsx */
+import { jsx } from "@emotion/react";
 import { useEffect, useState } from "react";
-import { GnomeList } from "../../components/gnomelist";
+import { GnomeList } from "../../components/GnomeList/gnomelist";
 import { useGnomes } from "../../context/gnomes.context";
+import { selectStyles } from "../../styles/pages.styles";
 
 function GnomesPage(props) {
   const { data, error, isLoading, filter, professions, setFilter } =
@@ -22,9 +26,28 @@ function GnomesPage(props) {
   return error ? (
     "Something goes wrong....maybe restart the app might help "
   ) : (
-    <main>
-      <header>
-        <select onChange={(e) => setFilter(e.target.value)} value={filter}>
+    <main
+      css={{
+        display: "grid",
+        gridTemplateColumns: "200px auto",
+        marginTop: "30px",
+        textAlign: "center",
+      }}
+    >
+      <aside>
+        <p
+          css={{
+            color: "#1f7a7a",
+            marginBottom: "10px",
+          }}
+        >
+          Filter by profession
+        </p>
+        <select
+          onChange={(e) => setFilter(e.target.value)}
+          value={filter}
+          css={selectStyles}
+        >
           <option value={""}>All workers</option>
           {professions.map((profession, index) => {
             return (
@@ -34,7 +57,7 @@ function GnomesPage(props) {
             );
           })}
         </select>
-      </header>
+      </aside>
       <GnomeList gnomes={gnomes} filter={filter} />
     </main>
   );
