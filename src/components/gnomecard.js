@@ -3,11 +3,11 @@
 import { css, jsx } from "@emotion/react";
 import { Link } from "react-router-dom";
 
-function GnomeCard({ gnome }) {
+function GnomeCard({ gnome, index }) {
   return (
     <Link
+      key={index}
       to={`/gnome/${gnome.id}`}
-      key={gnome.id}
       css={css`
         display: block;
         padding: 0.7em 1em;
@@ -41,10 +41,16 @@ function GnomeCard({ gnome }) {
       >
         {gnome.name}
       </h2>
-      <img loading="lazy" src={gnome.thumbnail} alt={gnome.name} css={css`
-        width: 250px;
-        height: auto;
-      `} />
+      <img
+        loading="lazy"
+        src={gnome.thumbnail}
+        alt={gnome.name}
+        css={css`
+          width: 250px;
+          height: auto;
+          max-height: 250px;
+        `}
+      />
       <div>
         <h3>Characteristics:</h3>
         <ul>

@@ -5,7 +5,7 @@ import * as mq from "../styles/mediaqueries";
 import { useState } from "react";
 import { GnomeCard } from "./gnomecard";
 
-const GnomeList = ({ gnomes }) => {
+const GnomeList = ({ gnomes, filter }) => {
   var [page, setPage] = useState(1);
   var [qtyPerPage] = useState(50);
   const handleClick = (evt) => {
@@ -14,8 +14,8 @@ const GnomeList = ({ gnomes }) => {
   const indexOfLastGnome = page * qtyPerPage;
   const indexOfFirstGnome = indexOfLastGnome - qtyPerPage;
   const currentGnomes = gnomes.slice(indexOfFirstGnome, indexOfLastGnome);
-  const renderGnomes = currentGnomes.map((gnome, index) => {
-    return <GnomeCard gnome={gnome} />;
+  const renderGnomes = currentGnomes.map((gnome) => {
+    return <GnomeCard gnome={gnome} key={gnome.id} />;
   });
 
   const pageNumbers = [];
@@ -52,10 +52,12 @@ const GnomeList = ({ gnomes }) => {
           {number}
         </li>
       );
-    }
+    };
+    return false;
   });
   return (
     <div>
+      <h2>{`You're selected all the ${filter ? filter + "'s" : 'workers'}`}</h2>
       <section
         css={{
           display: "grid",
