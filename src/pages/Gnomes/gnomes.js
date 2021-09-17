@@ -30,8 +30,8 @@ function GnomesPage(props) {
       css={{
         display: "grid",
         gridTemplateColumns: "200px auto",
-        marginTop: "30px",
         textAlign: "center",
+        padding: "30px"
       }}
     >
       <aside>

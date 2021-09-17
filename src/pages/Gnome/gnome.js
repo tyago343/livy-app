@@ -1,27 +1,30 @@
+/** @jsxRuntime classic */
+/** @jsx jsx */
+import { jsx } from "@emotion/react";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { useGnomes } from "../../context/gnomes.context";
-
+import { GnomePageWrapper } from "../../styles/pages.styles";
+import { Link } from "react-router-dom";
 function GnomePage() {
   const { data } = useGnomes();
   const { id } = useParams();
   const [gnome, setGnome] = useState(null);
   useEffect(() => {
-      
     const result = data?.Brastlewark.find((gnome) => gnome.id === +id);
     setGnome(result);
   }, [data, id]);
-  
+
   return !gnome ? (
     "isloading"
   ) : (
-    <section key={gnome.id}>
+    <section key={gnome.id} css={GnomePageWrapper}>
       <div>
         <h2>{gnome.name}</h2>
-        <div>
+        <div className="img-container">
           <img src={gnome.thumbnail} alt={gnome.name} />
         </div>
-        <div>
+        <div className="about">
           <div>
             <h3>Professions:</h3>
             {gnome.professions && gnome.professions.length ? (
@@ -38,10 +41,7 @@ function GnomePage() {
             <h3>Characteristics:</h3>
             <ul>
               <li>
-                Hair color:{" "}
-                <span>
-                  {gnome.hair_color}
-                </span>
+                Hair color: <span>{gnome.hair_color}</span>
               </li>
               <li>
                 Weight: <span>{parseFloat(gnome.weight).toFixed(2)}</span>
@@ -64,6 +64,7 @@ function GnomePage() {
           </div>
         </div>
       </div>
+      <Link to="/">Back to city</Link>
     </section>
   );
 }
