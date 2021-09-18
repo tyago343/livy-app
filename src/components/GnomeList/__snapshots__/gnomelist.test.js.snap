@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test for the list of gnomes Paginator is in the screen and contains qty of pages: 
+      <ol
+        class="css-b58ksj-GnomeList"
+        data-testid="paginator"
+      >
+        <li
+          class="css-n1yxqf"
+          id="1"
+        >
+          1
+        </li>
+      </ol>
+     1`] = `
+<ol
+  class="css-b58ksj-GnomeList"
+  data-testid="paginator"
+>
+  <li
+    class="css-n1yxqf"
+    id="1"
+  >
+    1
+  </li>
+</ol>
+`;

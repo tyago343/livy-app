@@ -14,8 +14,8 @@ const GnomeList = ({ gnomes, filter }) => {
   const indexOfLastGnome = page * qtyPerPage;
   const indexOfFirstGnome = indexOfLastGnome - qtyPerPage;
   const currentGnomes = gnomes?.slice(indexOfFirstGnome, indexOfLastGnome);
-  const renderGnomes = currentGnomes?.map((gnome) => {
-    return <GnomeCard gnome={gnome} key={gnome.id} />;
+  const renderGnomes = currentGnomes?.map((gnome, index) => {
+    return <GnomeCard gnome={gnome} key={index} />;
   });
 
   const pageNumbers = [];
@@ -39,7 +39,7 @@ const GnomeList = ({ gnomes, filter }) => {
     return false;
   });
   return (
-    <div>
+    <div data-testid="gnomelist">
       <h2>{`You're selected all the ${filter ? filter + "'s" : "workers"}`}</h2>
       <section
         css={gnomesGrid}
@@ -53,6 +53,7 @@ const GnomeList = ({ gnomes, filter }) => {
           align-items: center;
           width: "100%";
         `}
+        data-testid="paginator"
       >
         {renderPageNumbers}
       </ol>
