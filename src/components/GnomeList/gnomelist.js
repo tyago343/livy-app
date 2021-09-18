@@ -1,13 +1,16 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
 import { css, jsx } from "@emotion/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { GnomeCard } from "../GnomeCard/gnomecard";
 import { gnomesGrid, paginatorStyles } from "./gnomelist.styles";
 
 const GnomeList = ({ gnomes, filter }) => {
   var [page, setPage] = useState(1);
   var [qtyPerPage] = useState(50);
+  useEffect(() => {
+    setPage(1);
+  }, [filter]);
   const handleClick = (evt) => {
     setPage(Number(evt.target.id));
   };
@@ -17,7 +20,6 @@ const GnomeList = ({ gnomes, filter }) => {
   const renderGnomes = currentGnomes?.map((gnome, index) => {
     return <GnomeCard gnome={gnome} key={index} />;
   });
-
   const pageNumbers = [];
   for (let i = 1; i <= Math.ceil(gnomes?.length / qtyPerPage); i++) {
     pageNumbers.push(i);
@@ -41,11 +43,7 @@ const GnomeList = ({ gnomes, filter }) => {
   return (
     <div data-testid="gnomelist">
       <h2>{`You're selected all the ${filter ? filter + "'s" : "workers"}`}</h2>
-      <section
-        css={gnomesGrid}
-      >
-        {renderGnomes}
-      </section>
+      <section css={gnomesGrid}>{renderGnomes}</section>
       <ol
         css={css`
           display: flex;

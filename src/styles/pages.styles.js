@@ -37,6 +37,9 @@ export const GnomePageWrapper = css`
     @media screen and (max-width: 625px) {
       margin: 0 auto 30px;
     }
+    img {
+      max-width: 100%;
+    }
   }
   .about {
     margin: 20px auto;
@@ -50,7 +53,8 @@ export const GnomePageWrapper = css`
       text-align: left;
     }
   }
-  h2, h3 {
+  h2,
+  h3 {
     margin: 10px;
   }
 `;
