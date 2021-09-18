@@ -3,6 +3,7 @@
 import { jsx } from "@emotion/react";
 import { useEffect, useState } from "react";
 import { GnomeList } from "../../components/GnomeList/gnomelist";
+import { FullPageSpinner } from "../../components/spinner";
 import { useGnomes } from "../../context/gnomes.context";
 import { selectStyles } from "../../styles/pages.styles";
 
@@ -21,7 +22,7 @@ function GnomesPage(props) {
   }, [filter, data?.Brastlewark]);
 
   if (isLoading) {
-    return "isLoading";
+    return <FullPageSpinner />;
   }
   return error ? (
     "Something goes wrong....maybe restart the app might help "
@@ -31,7 +32,7 @@ function GnomesPage(props) {
         display: "grid",
         gridTemplateColumns: "200px auto",
         textAlign: "center",
-        padding: "30px"
+        padding: "30px",
       }}
     >
       <aside>
@@ -49,7 +50,7 @@ function GnomesPage(props) {
           css={selectStyles}
         >
           <option value={""}>All workers</option>
-          {professions.map((profession, index) => {
+          {professions?.map((profession, index) => {
             return (
               <option key={index} value={profession}>
                 {profession}

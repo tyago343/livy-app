@@ -46,7 +46,11 @@ export const GnomePageWrapper = css`
       flex-direction: column;
       align-items: center;
     }
+    ul {
+      text-align: left;
+    }
   }
-  h2 {
+  h2, h3 {
+    margin: 10px;
   }
 `;

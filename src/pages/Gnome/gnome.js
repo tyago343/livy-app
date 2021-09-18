@@ -6,6 +6,7 @@ import { useParams } from "react-router";
 import { useGnomes } from "../../context/gnomes.context";
 import { GnomePageWrapper } from "../../styles/pages.styles";
 import { Link } from "react-router-dom";
+import { FullPageSpinner } from "../../components/spinner";
 function GnomePage() {
   const { data } = useGnomes();
   const { id } = useParams();
@@ -16,7 +17,7 @@ function GnomePage() {
   }, [data, id]);
 
   return !gnome ? (
-    "isloading"
+    <FullPageSpinner />
   ) : (
     <section key={gnome.id} css={GnomePageWrapper}>
       <div>
