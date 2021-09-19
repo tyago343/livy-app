@@ -6,7 +6,7 @@ import { GnomeList } from "../../components/GnomeList/gnomelist";
 import { FullPageSpinner } from "../../components/spinner";
 import { useGnomes } from "../../context/gnomes.context";
 import { selectStyles } from "../../styles/pages.styles";
-
+import * as mq from "../../styles/mediaqueries";
 function GnomesPage(props) {
   const { data, error, isLoading, filter, professions, setFilter } =
     useGnomes();
@@ -33,6 +33,9 @@ function GnomesPage(props) {
         gridTemplateColumns: "200px auto",
         textAlign: "center",
         padding: "30px",
+        [mq.small]: {
+          gridTemplateColumns: "1fr",
+        },
       }}
     >
       <aside>

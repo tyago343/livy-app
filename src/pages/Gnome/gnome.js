@@ -28,7 +28,7 @@ function GnomePage() {
         <div className="about">
           <div>
             <h3>Professions:</h3>
-            {gnome.professions && gnome.professions.length ? (
+            {gnome.professions?.length ? (
               <ul>
                 {gnome.professions.map((elem, index) => (
                   <li key={index}>{elem}</li>
@@ -58,7 +58,7 @@ function GnomePage() {
           <div>
             <h3>Friends:</h3>
             <ul>
-              {gnome.friends
+              {gnome.friends.length
                 ? gnome.friends.map((friend) => <li key={friend}>{friend}</li>)
                 : "This gnome likes to be alone"}
             </ul>

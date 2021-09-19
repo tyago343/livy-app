@@ -7,7 +7,12 @@ import { gnomeLinkStyles } from "./gnomecard.styles";
 function GnomeCard({ gnome, index }) {
   if (gnome) {
     return (
-      <Link key={index} to={`/gnome/${gnome.id}`} css={gnomeLinkStyles} data-testid="gnome-card">
+      <Link
+        key={index}
+        to={`/gnome/${gnome.id}`}
+        css={gnomeLinkStyles}
+        data-testid="gnome-card"
+      >
         <h2
           css={css`
             font-size: 22px;
@@ -24,16 +29,23 @@ function GnomeCard({ gnome, index }) {
         >
           {gnome.name}
         </h2>
-        <img
-          loading="lazy"
-          src={gnome.thumbnail}
-          alt={gnome.name}
+        <div
           css={css`
-            width: 250px;
-            height: auto;
-            max-height: 250px;
+            width: 100%;
           `}
-        />
+        >
+          <img
+            loading="lazy"
+            src={gnome.thumbnail}
+            alt={gnome.name}
+            css={css`
+              width: 100%;
+              height: auto;
+              max-width:250px;
+              max-height: 250px;
+            `}
+          />
+        </div>
         <div>
           <h3>Characteristics:</h3>
           <ul>
@@ -57,6 +69,6 @@ function GnomeCard({ gnome, index }) {
       </Link>
     );
   }
-  return "Something it's wrong with this one :("
+  return "Something it's wrong with this one :(";
 }
 export { GnomeCard };

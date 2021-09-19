@@ -11,7 +11,6 @@ export const gnomeLinkStyles = css`
   color: #000;
   @media screen and (max-width: 625px) {
     max-width: 320px;
-    height: 250px;
     padding: 15px 10px;
     margin: 0 auto 1em;
   }

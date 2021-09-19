@@ -13,18 +13,16 @@ function App() {
         css={css`
           margin: 0;
           padding: 10px 30px;
-          display: -webkit-box;
-          display: -webkit-flex;
-          display: -ms-flexbox;
           display: flex;
           justify-content: space-between;
           align-items: center;
           flex-direction: row;
           background: linear-gradient(to bottom, #44c767 5%, #5cbf2a 100%);
-          background-color: rgba(0, 0, 0, 0);
-          background-color: #44c767;
           text-decoration: none;
           text-shadow: 0px 1px 0px #2f6627;
+          @media (max-width: 650px) {
+            flex-direction: column;
+          }
           a {
             text-decoration: none;
             color: #000;
@@ -41,6 +39,10 @@ function App() {
             margin: 0;
             font-size: 35px;
             font-weight: 700;
+            @media screen and (max-width: 725px) {
+              font-size: 20px;
+              margin-top: 10px
+            }
           }
         `}
       >

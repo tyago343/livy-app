@@ -20,13 +20,16 @@ export const paginatorStyles = css({
 });
 export const gnomesGrid = css({
   display: "grid",
-  gridTemplateColumns: "repeat(4, 1fr)",
+  gridTemplateColumns: "repeat(3, 1fr)",
   gridGap: "50px 2%",
-  padding: "25px 15%",
-  [mq.medium]: { gridTemplateColumns: "repeat(3, 1fr)" },
-  [mq.small]: {
+  padding: "25px 5%",
+  [mq.large] : {
+  gridTemplateColumns: "repeat(4, 1fr)",
+
+  },
+  [mq.medium]: {
     gridTemplateColumns: "1fr 1fr",
-    padding: "25px 7%",
+    padding: "25px 2%",
   },
   [mq.mobile]: {
     gridTemplateColumns: "1fr",
